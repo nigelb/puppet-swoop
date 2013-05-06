@@ -13,7 +13,7 @@ class swoop($tomcat_ram = 1024)
 		alias   => "swoop-war",
 		require => File["swoop-dir"]
 	}
-	file{"${swoop::params::context_directory}/Swoop.xml":
+	file{"${swoop::params::context_directory}/ROOT.xml":
 		alias   => "context-file",
 		content => template("swoop/context/swoop.xml.erb"),
 	}
