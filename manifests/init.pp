@@ -26,16 +26,16 @@ class swoop($tomcat_ram = "1024M")
 	file{"$swoop::params::war_directory/WEB-INF/classes/hbase-site.xml":
 		target  => $swoop::params::hbase_site,
 		ensure  => link,
-		user    => $swoop::params::servlet_user,
+		owner   => $swoop::params::servlet_user,
 		group   => $swoop::params::servlet_group,
-		require => Exec["swoop-unzip-war"],
+		require => Exec["swoop-unzip-war"]
 	}
 	file{"$swoop::params::war_directory/WEB-INF/classes/core-site.xml":
 		target  => $swoop::params::hadoop_site,
 		ensure  => link,
-		user    => $swoop::params::servlet_user,
+		owner   => $swoop::params::servlet_user,
 		group   => $swoop::params::servlet_group,
-		require => Exec["swoop-unzip-war"],
+		require => Exec["swoop-unzip-war"]
 	}
 	file{"${swoop::params::context_directory}/ROOT.xml":
 		alias   => "context-file",
