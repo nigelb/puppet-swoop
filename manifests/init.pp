@@ -16,8 +16,8 @@ class swoop($tomcat_ram = "1024M")
 	exec{"unzip /root/Swoop.war":
 		command  => "unzip /root/Swoop.war",
 		cwd      => $swoop::params::war_directory,
-		subscribe => File["swoop-war"],
-		refreshonly => true,
+		creats   => "${swoop::params::war_directory}/WEB-INF"
+		require  => File["swoop-war"],
 		alias    => "swoop-unzip-war",
 		user     => $swoop::params::servlet_user,
 		group    => $swoop::params::servlet_group,
