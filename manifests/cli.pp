@@ -17,6 +17,6 @@ class swoop::cli(
 		creates  => "${cli_directory}/bin",
 		require  => File["swoop-cli-dir"],
 		alias    => "swoop-cli-untar",
-		path     => "/usr/bin"
+		path     => "/bin"
         }
 }
